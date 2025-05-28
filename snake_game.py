@@ -8,6 +8,7 @@ green = 0, 255, 0
 red = 255, 0, 0
 
 score = 0 #Set the initial score
+background = pygame.image.load('grid_background.png')
 
 #Initial screen stuff
 pygame.init()
@@ -80,7 +81,8 @@ while running:
             if event.key == pygame.K_RIGHT and direction != 'LEFT':
                 direction = 'RIGHT'
 
-    screen.fill(black) #Fill in the screen
+    #screen.fill(black) #Fill in the screen
+    screen.blit(background, (0,0))
 
     #Set the snake on the screen
     for pos in snake_body:
