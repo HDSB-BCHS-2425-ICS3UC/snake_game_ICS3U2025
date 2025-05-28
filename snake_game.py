@@ -16,6 +16,10 @@ width, height = 720, 480
 pygame.display.set_caption('ICS3U/C1 Snake Game')
 screen = pygame.display.set_mode((width, height))
 
+#Sound Effect Stuff
+pygame.mixer.init()
+munch = pygame.mixer.Sound('munch.wav')
+
 #Snake Information
 snake_position = [360, 240]
 snake_speed = 10
@@ -111,6 +115,7 @@ while running:
         fruit_position = [random.randrange(0, (width//10))*10,
                         random.randrange(0, (height//10))*10]
         score += 10
+        munch.play()
     else:
         snake_body.pop()
 
