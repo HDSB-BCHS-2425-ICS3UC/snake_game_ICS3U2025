@@ -7,6 +7,8 @@ black = 0, 0, 0
 green = 0, 255, 0
 red = 255, 0, 0
 
+score = 0 #Set the initial score
+
 #Initial screen stuff
 pygame.init()
 width, height = 720, 480
@@ -46,6 +48,22 @@ def endgame():
     #Deactivate the quit
     pygame.quit()
     quit()
+
+#Display the score
+def scoring(score):
+    #Create a font object
+    score_font = pygame.font.SysFont('comicsansms', 20)
+
+    #Create text surface
+    score_surface = score_font.render('Score: '+str(score), True, red)
+
+    #Create a rectangle object for the surface
+    score_rect = score_surface.get_rect()
+
+    #blit = draw the surface onto the rectangle
+    screen.blit(score_surface, score_rect)
+
+    pygame.display.flip() #Update the screen
 
 running = True
 while running:
@@ -87,8 +105,11 @@ while running:
     if snake_position==fruit_position:
         fruit_position = [random.randrange(0, (width//10))*10,
                         random.randrange(0, (height//10))*10]
+        score += 10
     else:
         snake_body.pop()
+
+    scoring(score)#Display the score
 
     pygame.display.flip()
 
