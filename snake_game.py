@@ -23,6 +23,8 @@ direction = 'RIGHT'
 snake_body = [[360,240],[350,240],[340,240],[330,240]]
 
 #FRUIT!
+apple_image = pygame.image.load('apple.png')
+apple_image = pygame.transform.scale(apple_image, (10, 10))
 fruit_position = [random.randrange(0, (width//10))*10,
                   random.randrange(0, (height//10))*10]
 
@@ -89,7 +91,8 @@ while running:
         pygame.draw.rect(screen, green, pygame.Rect(pos[0], pos[1], 10, 10))
     
     #Draw my fruit
-    pygame.draw.circle(screen, red, (fruit_position[0]+5,fruit_position[1]+5),5)
+    #pygame.draw.circle(screen, red, (fruit_position[0]+5,fruit_position[1]+5),5)
+    screen.blit(apple_image, (fruit_position[0], fruit_position[1]))
 
     #Moving the snake
     if direction == 'RIGHT':
